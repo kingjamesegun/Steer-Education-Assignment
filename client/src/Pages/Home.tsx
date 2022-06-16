@@ -15,7 +15,7 @@ const Home = () => {
 				.then((res) => res.json())
 				.then((data) => setdata(data));
 		} catch (error) {}
-	}, [data]);
+	}, []);
 
 	//download report function
 	const handleButtonClick = () => {
@@ -52,7 +52,8 @@ const Home = () => {
 
 							<ReportTable data={data} />
 						</div>
-						<div className='w-full col-span-2 '>
+						<div className='w-full col-span-2 bg-[#FFF9E4] p-10 rounded-lg '>
+							<h1 className='text-2xl'>Total Export Change</h1>
 							<ExportChart />
 						</div>
 					</div>

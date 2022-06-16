@@ -25,7 +25,7 @@ function ReportTable({ data }: Props) {
 										</span>
 									</td>
 									<td
-										className={classNames('py-5', {
+										className={classNames('py-7', {
 											'text-green-700 font-bold': performance === Change.profit,
 											'text-red-500 font-bold': performance === Change.loss,
 											'bg-gray-500 font-bold': performance === Change.neutral,
