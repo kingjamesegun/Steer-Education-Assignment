@@ -1,29 +1,41 @@
 import React from 'react';
-import { DataDetailsProps } from '../../types/dataType';
+	import classNames from 'classnames';
+import { Props } from '../../types/dataType';
 
-interface Props {
-	data: Array<DataDetailsProps>;
+
+export enum Change {
+	profit = 'profit',
+	loss = 'loss',
+	neutral = 'neutral',
 }
 
-function RepotTable({ data }: Props) {
+function ReportTable({ data }: Props) {
 	return (
 		<div className='pt-10'>
 			{data.map(({ id, reports }) => (
 				<table key={id} className='w-full'>
 					<tbody>
-						{Object.values(reports).map((obj, index) => {
-              
-							return <tr key={index} className='border-t-2 border-gray-300 '>
-								{Object.values(obj).map((value, index2) => {
-                  console.log({value});
-                  
-									return (
-										<td key={index2} className='py-5'>
-											{value}
-										</td>
-									);
-								})}
-							</tr>})}
+						{reports.map(({ name, price, percentage, performance }, index) => {
+							return (
+								<tr key={index} className='border-t-2 border-gray-300 '>
+									<td>{name}</td>
+									<td>
+										<span className='bg-gray-200 px-3 py-1 rounded-md'>
+											&euro;{price}B
+										</span>
+									</td>
+									<td
+										className={classNames('py-5', {
+											'text-green-700 font-bold': performance === Change.profit,
+											'text-red-500 font-bold': performance === Change.loss,
+											'bg-gray-500 font-bold': performance === Change.neutral,
+										})}
+									>
+										{`${percentage}%`}
+									</td>
+								</tr>
+							);
+						})}
 					</tbody>
 				</table>
 			))}
@@ -31,4 +43,4 @@ function RepotTable({ data }: Props) {
 	);
 }
 
-export default RepotTable;
+export default ReportTable;

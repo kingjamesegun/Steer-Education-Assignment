@@ -8,6 +8,7 @@ import {
 	Title,
 	Tooltip,
 	Legend,
+	Filler
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
@@ -18,14 +19,14 @@ ChartJS.register(
 	LineElement,
 	Title,
 	Tooltip,
-	Legend
+	Legend,
+	Filler
 );
 
 export const options = {
-	responsive: true,
-	plugins: {
-	},
-    scales: {}
+	scales: {
+		xAxes: []
+	}
 };
 
 const labels = ['Jan', 'Feb', 'March', 'Apr', 'May', 'June', 'July', 'Aug'];
@@ -37,13 +38,13 @@ export const data = {
 			label: "",
 			data: [-50, 0, 100, 200, 250, 180, 150, 300, 400],
 			borderColor: '#F9D34C',
-			backgroundColor: '#FCDB72',
-			fill: true,
+			backgroundColor: '#FFF9E4',
 			tension: 0.4,
+			fill: true
 		},
 	],
 };
 
 export function ExportChart() {
-	return <Line options={options} data={data} />;
+	return <Line  data={data} />;
 }

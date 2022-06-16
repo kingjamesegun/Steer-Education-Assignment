@@ -1,7 +1,11 @@
+import { Change } from "../components/reportTable"
+
 interface ReportsProps{
     name: string,
-    percentage: 12,
-    price: 103
+    percentage: number,
+    price: number,
+    performance: Change ,
+    image:  string
 }
 
 export interface DataDetailsProps {

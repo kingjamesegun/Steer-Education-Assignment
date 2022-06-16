@@ -5,18 +5,31 @@ import ReportTable from '../components/reportTable';
 import { ExportChart } from '../components/exportChart';
 import ExportCards from '../components/exportCards';
 
+
+
 const Home = () => {
 	const [data, setdata] = useState<DataDetailsProps[]>([]);
 	useEffect(() => {
-
 		try {
-			
 			fetch('/api/data')
 				.then((res) => res.json())
 				.then((data) => setdata(data));
-		} catch (error) {
-		}
+		} catch (error) {}
 	}, [data]);
+
+	//download report function
+	const handleButtonClick = () => {
+		data.map((item) => {
+			const jsonString = `data:text/json;chatset=utf-8,${encodeURIComponent(
+				JSON.stringify(item.reports)
+			)}`;
+			const link = document.createElement('a');
+			link.href = jsonString;
+			link.download = 'data.json';
+
+			return link.click();
+		});
+	};
 
 	return (
 		<div className='mb-10'>
@@ -29,7 +42,10 @@ const Home = () => {
 						<div className='rounded-md bg-white drop-shadow-md p-5'>
 							<div className='flex justify-between'>
 								<h1 className='text-black text-xl'>Export Report</h1>
-								<button className='text-white py-1 px-3 rounded-full bg-[#fcdb72]'>
+								<button
+									className='text-white py-1 px-3 rounded-full bg-[#fcdb72]'
+									onClick={handleButtonClick}
+								>
 									Download
 								</button>
 							</div>
@@ -47,7 +63,7 @@ const Home = () => {
 
 			<div className='mt-[100%] md:mt-[90%] lg:mt-[35%]  px-2 md:px-5 lg:px-10'>
 				<h2 className='text-xl md:text-2xl md:py-5 py-10'>Key Exports</h2>
-				<ExportCards />
+				<ExportCards data={data} />
 			</div>
 		</div>
 	);
