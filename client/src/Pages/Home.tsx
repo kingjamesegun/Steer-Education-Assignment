@@ -33,12 +33,12 @@ const Home = () => {
 
 	return (
 		<div className='mb-10'>
-			<div className='bg-[#FCDB72] h-[50vh] px-2 md:px-5 lg:px-10 '>
+			<div className='bg-[#FCDB72] h-[40vh] md:h-[48vh] px-2 md:px-5 lg:px-10 '>
 				{/* Navbar */}
 				<Navbar data={data} />
-				<div className='py-5 md:py-10'>
+				<div className='py-5 md:py-8 lg:py-10'>
 					<h1 className='text-3xl lg:text-4xl text-black'>United Kingdom</h1>
-					<div className='grid lg:gap-10 grid-cols-1 lg:grid-cols-3 my-5 md:absolute top-[30%] left-0 w-full px-2 md:px-5 lg:px-10 '>
+					<div className='grid lg:gap-10 grid-cols-1 lg:grid-cols-3 my-5 md:absolute top-[22%] left-0 w-full px-2 md:px-5 lg:px-10 '>
 						<div className='rounded-md bg-white drop-shadow-md p-5'>
 							<div className='flex justify-between'>
 								<h1 className='text-black text-xl'>Export Report</h1>
@@ -52,7 +52,7 @@ const Home = () => {
 
 							<ReportTable data={data} />
 						</div>
-						<div className='w-full col-span-2 bg-[#FFF9E4] p-10 rounded-lg '>
+						<div className='w-full col-span-2 mt-20 md:mt-10 lg:mt-0 md:bg-[#FFF9E4] md:p-10 rounded-lg '>
 							<h1 className='text-2xl'>Total Export Change</h1>
 							<ExportChart />
 						</div>
@@ -62,7 +62,7 @@ const Home = () => {
 
 			{/* KEY EXPORTS */}
 
-			<div className='mt-[100%] md:mt-[90%] lg:mt-[35%]  px-2 md:px-5 lg:px-10'>
+			<div className='mt-[130%] md:mt-[100%] lg:mt-[35%] px-2 md:px-5 lg:px-10'>
 				<h2 className='text-xl md:text-2xl md:py-5 py-10'>Key Exports</h2>
 				<ExportCards data={data} />
 			</div>

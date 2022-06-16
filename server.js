@@ -48,4 +48,4 @@ app.get('/api/data', cors(), (req, res) => {
 
 const port = 5000;
 
-app.listen(port, () => `Server running on port ${port}`);
+app.listen(process.env.PORT || port, () => `Server running on port ${port}`);
